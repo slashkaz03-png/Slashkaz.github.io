@@ -1,0 +1,82 @@
+/* === SLASHKAZ :: SYSTEM INTERFACE === */
+
+body {
+  background:#050000;
+}
+
+/* Core container */
+div[style*="rgba(10,0,0,0.85)"] {
+  box-shadow:
+    0 0 18px rgba(182,41,41,0.45),
+    inset 0 0 30px rgba(0,0,0,0.85);
+  position:relative;
+  overflow:hidden;
+}
+
+/* Scanlines overlay */
+div[style*="rgba(10,0,0,0.85)"]::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode:overlay;
+}
+
+/* Header glow + flicker */
+div[style*="WELCOME TO"] {
+  text-shadow:
+    0 0 6px #b62929,
+    0 0 14px rgba(182,41,41,0.7);
+  animation:flicker 3.5s infinite;
+}
+
+/* Section containers */
+div[style*="border:1px dotted #b62929"] {
+  box-shadow: inset 0 0 12px rgba(182,41,41,0.25);
+  transition: all 0.3s ease;
+}
+div[style*="border:1px dotted #b62929"]:hover {
+  box-shadow:
+    inset 0 0 20px rgba(182,41,41,0.5),
+    0 0 10px rgba(182,41,41,0.25);
+}
+
+/* Section headers */
+div[style*="background:#b62929"] {
+  box-shadow:
+    inset 0 -2px 0 rgba(0,0,0,0.5),
+    0 0 10px rgba(182,41,41,0.7);
+}
+
+/* Images */
+img {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px rgba(182,41,41,0.7);
+  filter: contrast(1.1);
+}
+
+/* Links */
+a {
+  color:#ffbcbc;
+  text-decoration:none;
+}
+a:hover {
+  color:#ffffff;
+  text-shadow:0 0 6px #b62929;
+}
+
+/* Flicker animation */
+@keyframes flicker {
+  0%, 18%, 22%, 60%, 64%, 100% { opacity:1; }
+  20%, 21%, 63% { opacity:0.85; }
+}
